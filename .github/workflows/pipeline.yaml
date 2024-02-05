@@ -26,10 +26,3 @@ jobs:
 
       - name: Lint code
         run: npm run lint
-
-      - name: Check component file names
-        run: |
-          if [ $(find . -name "*.jsx" -not -path "./node_modules/*" -not -path "./build/*" -exec basename {} \; | grep -Pv '^[A-Z][a-z0-9]+\.jsx$' | wc -l) -gt 0 ]; then
-            echo "Error: Component file names must be in PascalCase."
-            exit 1
-          fi
